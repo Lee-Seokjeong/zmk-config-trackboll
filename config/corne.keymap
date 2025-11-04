@@ -13,6 +13,7 @@
         tb_pim447: trackball_pimoroni_pim447 {
             compatible = "zmk,behavior-pim447";
             #binding-cells = <1>;
+            };
         };
     };
 
