@@ -1,29 +1,79 @@
 #include "corne.dtsi"
 
+/ {
+    chosen {
+        zephyr,display = &oled;
+    };
 
-&default_transform {
-	col-offset = <6>;
+    pim447_listener: pim447_listener {
+        compatible = "zmk,input-listener";
+        status = "okay";
+        device = <&pimoroni_pim447>;
+    };
 };
 
 &kscan0 {
-	col-gpios
-		= <&pro_micro 14 GPIO_ACTIVE_HIGH>
-		, <&pro_micro 15 GPIO_ACTIVE_HIGH>
-		, <&pro_micro 18 GPIO_ACTIVE_HIGH>
-		, <&pro_micro 19 GPIO_ACTIVE_HIGH>
-		, <&pro_micro 20 GPIO_ACTIVE_HIGH>
-		, <&pro_micro 21 GPIO_ACTIVE_HIGH>
-		;
+    compatible = "zmk,kscan-mock";
+    columns = <0>;
+    rows = <0>;
+    events = <0>;
 };
 
 &pro_micro_i2c {
-  status = "okay";
+    status = "okay";
+    clock-frequency = <I2C_BITRATE_FAST>;
+    // I2C_BITRATE_STANDARD   100000
+    // I2C_BITRATE_FAST   400000
 
-	pimoroni_pim447: pimoroni_pim447@a {
+    pimoroni_pim447: pimoroni_pim447@a {
         compatible = "zmk,pimoroni-pim447";
         status = "okay";
-		reg = <0xa>;
+        reg = <0x0a>;
+        int-gpios = <&pro_micro 4 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
+        automouse-layer = <2>;
+    };
+};
 
-		
-	};
+&pinctrl {
+    i2c1_default: i2c1_default {
+        group1 {
+            psels = <NRF_PSEL(TWIM_SDA, 1, 00)>,
+                    <NRF_PSEL(TWIM_SCL, 0, 11)>;
+            bias-pull-up;
+        };
+    };
+
+    i2c1_sleep: i2c1_sleep {
+        group1 {
+            psels = <NRF_PSEL(TWIM_SDA, 1, 00)>,
+                    <NRF_PSEL(TWIM_SCL, 0, 11)>;
+            low-power-enable;
+            bias-pull-up;
+        };
+    };
+};
+
+&i2c1 {
+    status = "okay";
+    clock-frequency = <I2C_BITRATE_FAST>;
+
+    compatible = "nordic,nrf-twi";
+    pinctrl-0 = <&i2c1_default>;
+    pinctrl-1 = <&i2c1_sleep>;
+    pinctrl-names = "default", "sleep";
+
+    oled: ssd1306@3c {
+        compatible = "solomon,ssd1306fb";
+        reg = <0x3c>;
+        width = <128>;
+        height = <64>;
+        segment-offset = <0>;
+        page-offset = <0>;
+        display-offset = <0>;
+        multiplex-ratio = <63>;
+        segment-remap;
+        com-invdir;
+        inversion-on;
+        prechargep = <0x22>;
+    };
 };
