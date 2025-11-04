@@ -10,17 +10,11 @@
 
 / {
     behaviors {
-        tb_mode: trackball_mode {
-            compatible = "zmk,behavior-trackball-mode";
+        tb_pim447: trackball_pimoroni_pim447 {
+            compatible = "zmk,behavior-pim447";
             #binding-cells = <1>;
-            default-mode = <0>;    /* 0=move, 1=scroll */
-            /* Optional LED colors for each mode (see trackball_pim447.h) */
-
-            led-mode-move = <2>;   /* Green (LED_GREEN) */
-            led-mode-scroll = <3>; /* Blue (LED_BLUE) */
         };
     };
-};
 
 / {
     keymap {
