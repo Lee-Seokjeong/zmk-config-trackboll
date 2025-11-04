@@ -1,11 +1,20 @@
 manifest:
-  remotes:
-    - name: zmk_ds87
-      url-base: https://github.com/daniel2887
-  projects:
-    - name: zmk
-      remote: zmk_ds87
-      revision: ds87-mouse-pim447
-      import: app/west.yml
-  self:
-    path: config
+    remotes:
+        - name: zmkfirmware
+          url-base: https://github.com/zmkfirmware
+        - name: 9u0vad15
+          url-base: https://github.com/9u0vad15
+    projects:
+        - name: zmk
+          remote: zmkfirmware
+          revision: main
+          import: app/west.yml
+        # modules
+        - name: zmk-dongle-display
+          remote: 9u0vad15
+          revision: main
+        - name: zmk-pim447
+          remote: 9u0vad15
+          revision: main
+    self:
+        path: config
