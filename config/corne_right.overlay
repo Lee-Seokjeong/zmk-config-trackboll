@@ -1,5 +1,5 @@
 #include "corne.dtsi"
-#include <dt-bindings/zmk/trackball_pim447.h>
+
 
 &default_transform {
 	col-offset = <6>;
@@ -23,7 +23,7 @@
         compatible = "zmk,pimoroni-pim447";
         status = "okay";
 		reg = <0xa>;
-		label = "PIM447_TRACKBALL";
+# label = "PIM447_TRACKBALL";
 		swap-axes;
 		invert-move-x;
 		power-layer = <0>; /* MOUSE layer */
