@@ -19,8 +19,9 @@
 &pro_micro_i2c {
   status = "okay";
 
-	pim447_trackball@a {
-		compatible = "pimoroni,trackball_pim447";
+	pimoroni_pim447: pimoroni_pim447@a {
+        compatible = "zmk,pimoroni-pim447";
+        status = "okay";
 		reg = <0xa>;
 		label = "PIM447_TRACKBALL";
 		swap-axes;
