@@ -1,17 +1,11 @@
 #include "corne.dtsi"
 #include <dt-bindings/behavior_pim447.h>
 
-{
-    chosen {
-        zephyr,display = &oled;
-    };
-
     pim447_listener: pim447_listener {
         compatible = "zmk,input-listener";
         status = "okay";
         device = <&pimoroni_pim447>;
     };
-};
 
 &default_transform {
 	col-offset = <6>;
