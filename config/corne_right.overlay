@@ -28,11 +28,7 @@
         reg = <0x0a>;
         int-gpios = <&pro_micro 4 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
         automouse-layer = <2>;
-        swap-axes;
-		invert-move-x;
-		power-layer = <0>; /* MOUSE layer */
-		//idle-timeout = <10>; /* in seconds */
-
+        
 		/* Modified from,
 		 * https://gitlab.com/voidyourwarranty/zmk-yackboard/-/blob/0f6f8e19688af082116604acf793aca25d5de1f1/app/boards/shields/yackboard/yackboard_right.overlay
 		 */
