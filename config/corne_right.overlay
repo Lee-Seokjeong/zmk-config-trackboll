@@ -26,7 +26,6 @@
         compatible = "zmk,pimoroni-pim447";
         status = "okay";
         reg = <0xa>;
-        
         automouse-layer = <2>;
 		
     };
