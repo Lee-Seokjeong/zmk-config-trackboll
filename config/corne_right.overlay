@@ -28,5 +28,26 @@
         reg = <0xa>;
         int-gpios = <&pro_micro 4 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
         automouse-layer = <2>;
+		 /* ========= 마우스 속도 튜닝 (빠른 속도) ========= */
+        move-scale-x = <2>;
+        move-scale-y = <2>;
+
+        /* 스크롤 휠 감도 */
+        wheel-scale-x = <1>;
+        wheel-scale-y = <1>;
+
+        /* 작은 노이즈 제거 */
+        movement-threshold = <1>;
+
+        /* ========= 안정성 모드 =========
+         * 인터럽트 비활성화 → 폴링 사용
+         * (PIM447 INT 핀이 노이즈가 많아서 interrupt를 쓰면 튐)
+         */
+        use-interrupts = <0>;
+        polling-interval-ms = <8>;
+
+        /* ========= 저전력 모드 ========= */
+        idle-ms = <1000>;
+        sleep-enabled = <1>;
     };
 };
