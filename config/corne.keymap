@@ -5,6 +5,7 @@
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/bt.h>
 #include <dt-bindings/zmk/keys.h>
+#include <dt-bindings/zmk/rgb.h>
 
 // Layer aliases
 
@@ -69,10 +70,10 @@
 
         default {
             bindings = <
-&trans      &mt N2 W     &mt N3 E     &mt N4 R     &mt N5 T     &mt N6 Y    &mt N7 U     &mt N8 I        &mt N9 O      &mt N0 P
-&mt LCMD A  &mt LSHFT S  &mt LCTRL D  &mt LSHFT F  &mt LALT G   &mt RALT H  &mt RSHFT J  &mt RCTRL K     &mt RSHFT L   &mt RCMD SEMI
-&kp Z       &kp X        &mt LC(C) C  &mt LC(V) V  &kp B        &kp N       &kp M        &mt LBKT COMMA  &mt RBKT DOT  &kp FSLH
-                         &kp ESC      &lt 2 TAB    &lt 1 SPACE  &kp BSPC    &lt 2 RET    &kp DEL
+&rgb_ug RGB_TOG  &mt N2 W     &mt N3 E     &mt N4 R     &mt N5 T     &mt N6 Y    &mt N7 U     &mt N8 I        &mt N9 O      &mt N0 P
+&mt LCMD A       &mt LSHFT S  &mt LCTRL D  &mt LSHFT F  &mt LALT G   &mt RALT H  &mt RSHFT J  &mt RCTRL K     &mt RSHFT L   &mt RCMD SEMI
+&kp Z            &kp X        &mt LC(C) C  &mt LC(V) V  &kp B        &kp N       &kp M        &mt LBKT COMMA  &mt RBKT DOT  &kp FSLH
+                              &kp ESC      &lt 2 TAB    &lt 1 SPACE  &kp BSPC    &lt 2 RET    &kp DEL
             >;
         };
 
