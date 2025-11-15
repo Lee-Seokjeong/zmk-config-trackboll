@@ -27,9 +27,7 @@
         tb_pim447: trackball_pimoroni_pim447 {
             compatible = "zmk,behavior-pim447";
             #binding-cells = <1>;
-            default-mode = <0>;    /* 0=move, 1=scroll */
-            /* Optional LED colors for each mode (see trackball_pim447.h) */
-           
+            
         };
     };
 
