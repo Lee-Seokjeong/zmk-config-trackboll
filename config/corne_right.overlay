@@ -21,9 +21,7 @@
     clock-frequency = <I2C_BITRATE_FAST>;
     // I2C_BITRATE_STANDARD   100000
     // I2C_BITRATE_FAST   400000
-    sda-gpio = <&pro_micro 20 GPIO_ACTIVE_HIGH>;
-    scl-gpio = <&pro_micro 17 GPIO_ACTIVE_HIGH>;
-
+    
     pimoroni_pim447: pimoroni_pim447@a {
         compatible = "zmk,pimoroni-pim447";
         status = "okay";
