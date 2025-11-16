@@ -29,9 +29,5 @@
         int-gpios = <&pro_micro 4 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
         automouse-layer = <2>;
 		
-		/* Optional LED color (RGB values 0-255) */
-        led-red = <255>;
-        led-green = <0>;
-        led-blue = <0>;
-    };
+	 };
 };
