@@ -27,6 +27,11 @@
         status = "okay";
         reg = <0xa>;
         automouse-layer = <2>;
-		
+	oled: ssd1306@3c {
+            compatible = "solomon,ssd1306fb";
+            reg = <0x3c>;
+            width = <128>;
+            height = <32>;
+        };
 	 };
 };
