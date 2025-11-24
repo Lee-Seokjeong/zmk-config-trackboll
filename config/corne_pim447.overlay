@@ -47,6 +47,7 @@
             compatible = "zmk,pimoroni-pim447";
             status = "okay";
             reg = <0xa>;
+            int-gpios = <&gpio1 7 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
             automouse-layer = <2>;
         };
 
