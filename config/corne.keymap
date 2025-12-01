@@ -54,13 +54,7 @@
             bindings = <&kp BSLH>;
             key-positions = <28 29>;
         };
-
-        cb_to_nav {
-            bindings = <&tog 2>;
-            key-positions = <32 33>;
-    
-        };
-    };
+   };
     keymap {
         compatible = "zmk,keymap";
 
