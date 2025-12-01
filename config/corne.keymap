@@ -21,40 +21,7 @@
             #binding-cells = <1>;
         };
     };
-
-    combos {
-        compatible = "zmk,combos";
-
-        cb_grave {
-            bindings = <&kp GRAVE>;
-            key-positions = <1 2>;
-        };
-
-        cb_minus {
-            bindings = <&kp MINUS>;
-            key-positions = <12 13>;
-        };
-
-        cb_equal {
-            bindings = <&kp EQUAL>;
-            key-positions = <16 17>;
-        };
-
-        cb_caps {
-            bindings = <&kp CAPS>;
-            key-positions = <20 21>;
-        };
-
-        cb_quotes {
-            bindings = <&kp APOS>;
-            key-positions = <27 28>;
-        };
-
-        cb_backslash {
-            bindings = <&kp BSLH>;
-            key-positions = <28 29>;
-        };
-   };
+    
     keymap {
         compatible = "zmk,keymap";
 
