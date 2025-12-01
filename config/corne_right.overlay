@@ -43,6 +43,6 @@
         status = "okay";
 		int-gpios = <&gpio1 7 (GPIO_PULL_UP | GPIO_ACTIVE_LOW)>;
         reg = <0xa>;
-        automouse-layer = < 2 >;
+        automouse-layer = < 3 >;
 	 };
 };
