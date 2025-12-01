@@ -9,12 +9,6 @@
 #include <dt-bindings/zmk/outputs.h>
 #include <dt-bindings/zmk/rgb.h>
 
-// Layer aliases
-
-#define DEF 0
-#define NUM 1
-#define NAV 2
-
 &mt {
     tapping-term-ms = <180>;
     flavor = "tap-preferred";
@@ -64,37 +58,55 @@
         cb_to_nav {
             bindings = <&tog 2>;
             key-positions = <32 33>;
+    
         };
     };
-
     keymap {
         compatible = "zmk,keymap";
 
-        default {
+        default_layer {
             bindings = <
-&rgb_ug RGB_TOG  &mt N2 W     &mt N3 E     &mt N4 R     &mt N5 T     &mt N6 Y    &mt N7 U     &mt N8 I        &mt N9 O      &mt N0 P
-&trans           &mt LSHFT S  &mt LCTRL D  &mt LSHFT F  &mt LALT G   &mt RALT H  &mt RSHFT J  &mt RCTRL K     &mt RSHFT L   &mt RCMD SEMI
-&kp Z            &kp X        &mt LC(C) C  &mt LC(V) V  &kp B        &kp N       &kp M        &mt LBKT COMMA  &mt RBKT DOT  &kp FSLH
-                              &kp ESC      &lt 2 TAB    &lt 1 SPACE  &kp BSPC    &lt 2 RET    &kp DEL
+&kp CAPSLOCK    &kp Q  &kp W  &kp E     &kp R   &kp T        &kp Y    &kp U   &kp I      &kp O    &kp P     &kp BACKSPACE
+&kp LEFT_SHIFT  &kp A  &kp S  &kp D     &kp F   &kp G        &kp H    &kp J   &kp K      &kp L    &kp SEMI  &kp SQT
+&kp LCTRL       &kp Z  &kp X  &kp C     &kp V   &kp B        &kp N    &kp M   &kp COMMA  &kp DOT  &kp FSLH  &kp ESC
+                              &kp LGUI  &tog 1  &kp SPACE    &kp RET  &tog 2  &kp RALT
             >;
         };
 
-        numbers {
+        lower_layer {
             bindings = <
-&kp N1     &kp N2     &kp N3     &kp N4    &kp N5    &kp KP_MULTIPLY  &kp N7   &kp N8  &kp N9  &kp PLUS
-&kp N6     &kp N7     &kp N8     &kp N9    &kp N0    &kp KP_DIVIDE    &kp N4   &kp N5  &kp N6  &kp MINUS
-&kp GRAVE  &kp MINUS  &kp EQUAL  &kp LBKT  &kp RBKT  &none            &kp N1   &kp N2  &kp N3  &kp EQUAL
-                      &trans     &trans    &trans    &none            &kp DOT  &kp N0
+&kp F1     &kp F2          &kp F3   &kp F4        &kp F5            &kp F6               &kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9   &kp SLASH  &kp ASTERISK  &kp MINUS
+&kp F7     &kp F8          &kp F9   &kp F10       &kp F11           &kp F10              &kp NUMBER_4  &kp N5        &kp NUMBER_6   &kp BSLH   &kp EQUAL     &kp PLUS
+&kp LCTRL  &kp LEFT_SHIFT  &kp TAB  &kp GRAVE     &kp LEFT_BRACKET  &kp RIGHT_BRACKET    &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3   &kp DOT    &kp DELETE    &kp ENTER
+                                    &kp LEFT_ALT  &trans            &kp BSLH             &kp NUMBER_0  &trans        &kp BACKSPACE
             >;
         };
 
-        navigation {
+        raise_layer {
             bindings = <
-&kp F1    &kp F2    &kp F3          &kp F4     &kp F5   &kp C_VOL_UP  &kp HOME   &kp UP    &kp END    &tb_pim447 PIM447_TOGGLE_MODE
-&kp F6    &kp F7    &kp F8          &kp F9     &kp F10  &kp C_VOL_DN  &kp LEFT   &kp DOWN  &kp RIGHT  &none
-&kp LEFT  &kp DOWN  &kp UP          &kp RIGHT  &kp F12  &kp C_MUTE    &kp PG_UP  &kp DOWN  &kp PG_DN  &none
-                    &bt BT_CLR_ALL  &none      &none    &none         &none      &none
+&trans  &trans          &kp UP_ARROW       &kp PRINTSCREEN  &kp SCROLLLOCK  &kp K_PP          &bt BT_SEL 0       &bt BT_SEL 1    &bt BT_SEL 2     &bt BT_SEL 3  &bt BT_SEL 4  &bt BT_CLR
+&trans  &kp LEFT_ARROW  &kp DOWN_ARROW     &kp RIGHT_ARROW  &kp K_PREV      &kp K_NEXT        &kp PRINTSCREEN    &kp SCROLLLOCK  &kp PAUSE_BREAK  &trans        &trans        &kp PAGE_UP
+&trans  &kp K_MUTE      &kp C_VOLUME_DOWN  &kp C_VOLUME_UP  &kp END         &kp K_PREVIOUS    &kp INS            &kp HOME        &kp DELETE       &kp END       &trans        &kp PAGE_DOWN
+                                           &trans           &trans          &trans            &ext_power EP_OFF  &trans          &out OUT_TOG
             >;
+        };
+
+        layer_3 {
+            bindings = <
+&trans  &rgb_ug RGB_TOG                 &rgb_ug RGB_HUI                   &rgb_ug RGB_HUD                  &rgb_ug RGB_SAI                   &rgb_ug RGB_SAD                     &mkp LCLK       &pim447_scroll_move  &mkp RCLK  &mkp MB1  &mkp MB2  &trans
+&trans  &rgb_ug RGB_BRI                 &rgb_ug RGB_BRD                   &rgb_ug RGB_SPI                  &rgb_ug RGB_SPD                   &rgb_ug RGB_EFF                     &pim447_toggle  &mkp MCLK            &mkp MB3   &mkp MB4  &mkp MB5  &trans
+&trans  &rgb_ug RGB_COLOR_HSB(0,93,49)  &rgb_ug RGB_COLOR_HSB(245,91,50)  &rgb_ug RGB_COLOR_HSB(60,97,53)  &rgb_ug RGB_COLOR_HSB(119,92,52)  &rgb_ug RGB_COLOR_HSB(301,88,49)    &mkp MCLK       &trans               &trans     &trans    &trans    &trans
+                                                                          &mkp LCLK                        &trans                            &mkp RCLK                           &mkp LCLK       &trans               &mkp RCLK
+            >;
+        };
+    };
+
+    conditional_layers {
+        compatible = "zmk,conditional-layers";
+
+        trackball {
+            if-layers = <1 2>;
+            then-layer = <3>;
         };
     };
 };
