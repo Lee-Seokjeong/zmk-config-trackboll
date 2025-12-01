@@ -9,11 +9,6 @@
 #include <dt-bindings/zmk/outputs.h>
 #include <dt-bindings/zmk/rgb.h>
 
-&mt {
-    tapping-term-ms = <180>;
-    flavor = "tap-preferred";
-};
-
 / {
     behaviors {
         tb_pim447: trackball_pimoroni_pim447 {
