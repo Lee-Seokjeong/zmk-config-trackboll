@@ -2,12 +2,6 @@
 #include <dt-bindings/behavior_pim447.h>
 #include <dt-bindings/zmk/mouse.h>
 
-pim447_listener: pim447_listener {
-        compatible = "zmk,input-listener";
-        status = "okay";
-        device = <&pimoroni_pim447>;
-    };
-
 &default_transform {
 	col-offset = <6>;
 };
@@ -23,7 +17,11 @@ pim447_listener: pim447_listener {
 		;
 };
 
-
+pim447_listener: pim447_listener {
+        compatible = "zmk,input-listener";
+        status = "okay";
+        device = <&pimoroni_pim447>;
+    };
 
 / {
     chosen {
