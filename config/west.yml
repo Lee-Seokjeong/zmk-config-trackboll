@@ -1,7 +1,7 @@
 manifest:
     remotes:
-        - name: zmk
-          url-base: https://github.com/Lee-Seokjeong/zmk
+        - name: Lee-Seokjeong
+          url-base: https://github.com/Lee-Seokjeong
         - name: 9u0vad15
           url-base: https://github.com/9u0vad15
     projects:
