@@ -17,9 +17,9 @@
 
 / {
     behaviors {
-        tb_pim447_toggle: behavior_mod_toggle {
-            compatible = "zmk,behavior-mod-toggle";
-            #binding-cells = <0>;
+        tb_pim447: zmk_behavior_pim447 {
+            compatible = "zmk,behavior-pim447";
+            #binding-cells = <1>;
             };
     };
 
