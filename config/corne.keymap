@@ -20,7 +20,17 @@
         tb_pim447: zmk_behavior_pim447 {
             compatible = "zmk,behavior-pim447";
             #binding-cells = <1>;
-            };
+        };
+    tb_pim447_toggle: behavior_mod_toggle {
+            compatible = "zmk,behavior-mod-toggle";
+            #binding-cells = <0>; // 인자 없음
+
+            // 기본 모드: 마우스 이동
+            bindings = <&tb_pim447 MOVE>;
+
+            // 토글 시 모드: 스크롤
+            bindings_toggled = <&tb_pim447 SCROLL>;
+        };
     };
 
     keymap {
