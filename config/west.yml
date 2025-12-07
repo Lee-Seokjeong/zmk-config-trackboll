@@ -2,8 +2,8 @@ manifest:
     remotes:
         - name: Lee-Seokjeong
           url-base: https://github.com/Lee-Seokjeong
-        - name: 9u0vad15
-          url-base: https://github.com/9u0vad15
+        - name: Lee-Seokjeong
+          url-base: https://github.com/Lee-Seokjeong
     projects:
         - name: zmk
           remote: Lee-Seokjeong
@@ -11,7 +11,7 @@ manifest:
           import: app/west.yml
         # modules
         - name: zmk-pim447
-          remote: 9u0vad15
+          remote: Lee-Seokjeong
           revision: main
     self:
         path: config
