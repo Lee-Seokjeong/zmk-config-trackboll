@@ -6,7 +6,7 @@ manifest:
           url-base: https://github.com/9u0vad15
     projects:
         - name: zmk
-          remote: zmkfirmware
+          remote: Lee-Seokjeong
           revision: main
           import: app/west.yml
         # modules
