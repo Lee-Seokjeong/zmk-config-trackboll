@@ -17,10 +17,10 @@
 
 / {
     behaviors {
-        tb_pim447: trackball_pimoroni_pim447 {
-            compatible = "zmk,behavior-pim447";
-            #binding-cells = <1>;
-        };
+        tb_pim447_toggle: behavior_mod_toggle {
+            compatible = "zmk,behavior-mod-toggle";
+            #binding-cells = <0>;
+            };
     };
 
     keymap {
@@ -48,7 +48,7 @@
             bindings = <
 &trans      &trans          &kp UP_ARROW       &kp PRINTSCREEN  &kp SCROLLLOCK  &kp K_PP          &bt BT_SEL 0       &bt BT_SEL 1    &bt BT_SEL 2     &bt BT_SEL 3  &bt BT_SEL 4  &bt BT_CLR
 &trans      &kp LEFT_ARROW  &kp DOWN_ARROW     &kp RIGHT_ARROW  &kp K_PREV      &kp K_NEXT        &kp PRINTSCREEN    &kp SCROLLLOCK  &kp PAUSE_BREAK  &trans        &trans        &kp PAGE_UP
-&tb_pim447  &kp K_MUTE      &kp C_VOLUME_DOWN  &kp C_VOLUME_UP  &kp END         &kp K_PREVIOUS    &kp INS            &kp HOME        &kp DELETE       &kp END       &trans        &kp PAGE_DOWN
+&trans      &kp K_MUTE      &kp C_VOLUME_DOWN  &kp C_VOLUME_UP  &kp END         &kp K_PREVIOUS    &kp INS            &kp HOME        &kp DELETE       &kp END       &trans        &kp PAGE_DOWN
                                                &trans           &trans          &trans            &ext_power EP_OFF  &trans          &out OUT_TOG
             >;
         };
