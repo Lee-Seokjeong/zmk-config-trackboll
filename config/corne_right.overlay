@@ -17,19 +17,16 @@
 		;
 };
 
-pim447_listener: pim447_listener {
-        compatible = "zmk,input-listener";
-        status = "okay";
-        device = <&pimoroni_pim447>;
-    };
-
 / {
     chosen {
         zephyr,display = &oled;
     };
 };
-
-
+	pim447_listener: pim447_listener {
+        	compatible = "zmk,input-listener";
+        	status = "okay";
+        	device = <&pimoroni_pim447>;
+    };
 
 &pro_micro_i2c {
     status = "okay";
