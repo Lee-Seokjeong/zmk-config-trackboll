@@ -65,3 +65,8 @@
         zmk,underglow = &led_strip;
     };
 };
+
+// 기본 ZMK 설정의 chain-length <10>을 덮어쓰기 위함
+&led_strip {
+    chain-length = <54>;
+};
