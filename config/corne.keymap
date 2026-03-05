@@ -66,7 +66,7 @@
             compatible = "zmk,behavior-tap-dance";
             label = "ENKOR";
             #binding-cells = <0>;
-            bindings = <&kp RIGHT_ALT>, <&kp LANGUAGE_2>, <&to 3>;
+            bindings = <&kp RIGHT_ALT>, <&kp LANGUAGE_2>, <&tog 3>;
         };
 
         ntob: ntob {
