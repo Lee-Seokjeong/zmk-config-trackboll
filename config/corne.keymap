@@ -1,25 +1,144 @@
-#include <input/processors.dtsi>
-#include <dt-bindings/led/led.h>
-#include <dt-bindings/behavior_pim447.h>
-#include <dt-bindings/zmk/mouse.h>
 #include <behaviors.dtsi>
 #include <dt-bindings/zmk/bt.h>
-#include <dt-bindings/zmk/ext_power.h>
 #include <dt-bindings/zmk/keys.h>
-#include <dt-bindings/zmk/outputs.h>
-#include <dt-bindings/zmk/pointing.h>
-#include <dt-bindings/zmk/rgb.h>
-
-#define default_layer 0
-#define lower_layer 1
-#define raise_layer 2
-#define layer_3 3
 
 / {
+    // [JK 동시에 누르면 엔터] 콤보 설정
+
+    combos {
+        compatible = "zmk,combos";
+
+        combo_enter {
+            timeout-ms = <50>;
+            key-positions = <19 20>; // J(19)와 K(20) 위치
+            bindings = <&kp RET>;
+        };
+
+        kl {
+            bindings = <&kp EXCLAMATION>;
+            key-positions = <21 22>;
+        };
+
+        xc {
+            bindings = <&kp LC(C)>;
+            key-positions = <26 27>;
+        };
+
+        cv {
+            bindings = <&kp LC(V)>;
+            key-positions = <27 28>;
+        };
+
+        io {
+            bindings = <&kp RG(PERIOD)>;
+            key-positions = <8 9>;
+        };
+
+        clip {
+            bindings = <&kp LG(V)>;
+            key-positions = <2 3>;
+        };
+
+        cap {
+            bindings = <&kp LS(LG(S))>;
+            key-positions = <15 16>;
+        };
+
+        qw {
+            bindings = <&kp TILDE>;
+            key-positions = <1 2>;
+        };
+    };
+
     behaviors {
-        tb_pim447: zmk_behavior_pim447 {
-            compatible = "zmk,behavior-pim447";
-            #binding-cells = <1>;
+        // 홈로우 모드: 살짝 누르면 문자, 길게 누르면 모디파이어(Ctrl, Alt 등)
+
+        hm: homerow_mods {
+            compatible = "zmk,behavior-hold-tap";
+            #binding-cells = <2>;
+            tapping-term-ms = <200>;
+            quick-tap-ms = <0>;
+            flavor = "tap-preferred";
+            bindings = <&kp>, <&kp>;
+        };
+
+        enkor: enkor {
+            compatible = "zmk,behavior-tap-dance";
+            label = "ENKOR";
+            #binding-cells = <0>;
+            bindings = <&kp RIGHT_ALT>, <&kp LANGUAGE_2>, <&tog 3>;
+        };
+
+        ntob: ntob {
+            compatible = "zmk,behavior-tap-dance";
+            label = "NTOB";
+            #binding-cells = <0>;
+            bindings = <&kp N>, <&kp B>;
+        };
+    };
+
+    macros {
+        new_macro1: new_macro {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp O &kp G &kp L &kp A &kp B &kp W &kp O &kp R &kp L &kp D &kp AT &kp G &kp M &kp A &kp I &kp L &kp DOT &kp C &kp O &kp M>;
+            label = "NEW_MACRO";
+        };
+
+        new_macro3: new_macro3 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp A &kp U &kp D &kp W &kp L &kp S &kp N2 &kp N6 &kp N9 &kp N7 &kp AT &kp G &kp M &kp A &kp I &kp L &kp DOT &kp C &kp O &kp M>;
+            label = "NEW_MACRO3";
+        };
+
+        new_macro4: new_macro4 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp A &kp U &kp D &kp W &kp L &kp S &kp N9 &kp N6 &kp N2 &kp N4 &kp AT &kp G &kp M &kp A &kp I &kp L &kp DOT &kp C &kp O &kp M>;
+            label = "NEW_MACRO4";
+        };
+
+        new_macro5: new_macro5 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp I &kp A &kp M &kp J &kp O &kp K &kp E &kp R &kp N2 &kp N4 &kp AT>;
+            label = "NEW_MACRO5";
+        };
+
+        new_macro6: new_macro6 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp I &kp A &kp M &kp J &kp O &kp K &kp E &kp R &kp N2 &kp N4 &kp DLLR>;
+            label = "NEW_MACRO6";
+        };
+
+        new_macro7: new_macro7 {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp S &kp K &kp F &kp M &kp F &kp T &kp K &kp F &kp K &kp D &kp G &kp K &kp F &kp K &kp M &kp STAR>;
+            label = "NEW_MACRO7";
+        };
+
+        new_macroqq: new_macroqq {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp SPACE &kp SPACE &kp SPACE &kp SPACE &kp N3 &kp N1 &kp N4 &kp SPACE &kp N1 &kp N1 &kp N3 &kp SPACE &kp N1 &kp N1 &kp N0 &kp N5 &kp SPACE>;
+            label = "NEW_MACROQQ";
+        };
+
+        new_macrogdgdg: new_macrogdgdg {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp N0 &kp N1 &kp N0 &kp MINUS &kp N4 &kp N4 &kp N5 &kp N5 &kp MINUS &kp N9 &kp N6 &kp N2 &kp N4>;
+            label = "NEW_MACROGDGDG";
+        };
+
+        new_macrofds: new_macrofds {
+            compatible = "zmk,behavior-macro";
+            #binding-cells = <0>;
+            bindings = <&kp O &kp G &kp L &kp A &kp B &kp W &kp O &kp R &kp L &kp D &kp AT &kp N &kp A &kp V &kp E &kp R &kp DOT &kp C &kp O &kp M>;
+            label = "NEW_MACROFDS";
         };
     };
 
@@ -28,47 +147,38 @@
 
         default_layer {
             bindings = <
-&kp CAPSLOCK    &kp Q  &kp W  &kp E     &kp R   &kp T        &kp Y    &kp U   &kp I      &kp O    &kp P     &kp BACKSPACE
-&kp LEFT_SHIFT  &kp A  &kp S  &kp D     &kp F   &kp G        &kp H    &kp J   &kp K      &kp L    &kp SEMI  &kp SQT
-&kp LCTRL       &kp Z  &kp X  &kp C     &kp V   &kp B        &kp N    &kp M   &kp COMMA  &kp DOT  &kp FSLH  &kp ESC
-                              &kp LGUI  &tog 1  &kp SPACE    &kp RET  &tog 2  &kp RALT
+&kp TAB    &kp Q        &kp W       &kp E       &kp R        &kp T          &kp Y   &kp U            &kp I       &kp O       &kp P                  &kp BSPC
+&kp CLCK   &hm LCTRL A  &hm LGUI S  &hm LALT D  &hm LSHFT F  &kp G          &kp H   &hm RSHFT J      &hm RALT K  &hm RGUI L  &hm LEFT_CONTROL SEMI  &kp C_VOLUME_UP
+&kp LSHFT  &kp Z        &kp X       &kp C       &kp V        &kp B          &ntob   &kp M            &kp COMMA   &kp DOT     &kp FSLH               &kp C_VOLUME_DOWN
+                                    &kp ESC     &lt 1 SPACE  &lt 1 SPACE    &enkor  &lt 2 BACKSPACE  &kp DELETE
             >;
         };
 
         lower_layer {
             bindings = <
-&kp F1     &kp F2          &kp F3   &kp F4        &kp F5            &kp F6               &kp NUMBER_7  &kp NUMBER_8  &kp NUMBER_9   &kp SLASH  &kp ASTERISK  &kp MINUS
-&kp F7     &kp F8          &kp F9   &kp F10       &kp F11           &kp F10              &kp NUMBER_4  &kp N5        &kp NUMBER_6   &kp BSLH   &kp EQUAL     &kp PLUS
-&kp LCTRL  &kp LEFT_SHIFT  &kp TAB  &kp GRAVE     &kp LEFT_BRACKET  &kp RIGHT_BRACKET    &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3   &kp DOT    &kp DELETE    &kp ENTER
-                                    &kp LEFT_ALT  &trans            &kp BSLH             &kp NUMBER_0  &trans        &kp BACKSPACE
+&trans      &kp EXCLAMATION  &kp AT_SIGN    &kp HASH      &kp DOLLAR            &kp PERCENT              &trans     &kp N7        &kp N8        &kp N9        &kp UNDERSCORE  &trans
+&trans      &kp CARET        &kp AMPERSAND  &kp ASTERISK  &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS    &kp PLUS   &kp NUMBER_4  &kp N5        &kp NUMBER_6  &kp EQUAL       &trans
+&bt BT_CLR  &bt BT_SEL 0     &bt BT_SEL 1   &bt BT_SEL 2  &bt BT_SEL 3          &bt BT_SEL 4             &kp MINUS  &kp NUMBER_1  &kp NUMBER_2  &kp NUMBER_3  &kp COMMA       &kp PERIOD
+                                            &trans        &trans                &trans                   &trans     &trans        &kp NUMBER_0
             >;
         };
 
         raise_layer {
             bindings = <
-&tb_pim447 PIM447_TOGGLE_MODE  &trans          &kp UP_ARROW       &kp PRINTSCREEN  &kp SCROLLLOCK  &kp K_PP          &bt BT_SEL 0       &bt BT_SEL 1    &bt BT_SEL 2     &bt BT_SEL 3  &bt BT_SEL 4  &bt BT_CLR
-&trans                         &kp LEFT_ARROW  &kp DOWN_ARROW     &kp RIGHT_ARROW  &kp K_PREV      &kp K_NEXT        &kp PRINTSCREEN    &kp SCROLLLOCK  &kp PAUSE_BREAK  &trans        &trans        &kp PAGE_UP
-&trans                         &kp K_MUTE      &kp C_VOLUME_DOWN  &kp C_VOLUME_UP  &kp END         &kp K_PREVIOUS    &kp INS            &kp HOME        &kp DELETE       &kp END       &trans        &kp PAGE_DOWN
-                                               &trans           &trans          &trans            &ext_power EP_OFF  &trans          &out OUT_TOG
+&kp F1      &kp F2      &kp F3    &kp F4   &kp F5       &kp F6           &kp LEFT_PARENTHESIS  &kp RIGHT_PARENTHESIS  &kp UP                &kp LEFT_BRACKET  &kp RIGHT_BRACKET  &trans
+&kp F7      &kp F8      &kp F9    &kp F10  &kp F11      &kp F12          &kp SQT               &kp LEFT_ARROW         &kp DOWN              &kp RIGHT_ARROW   &kp LEFT_SHIFT     &kp ENTER
+&kp INSERT  &kp K_MENU  &kp HOME  &kp END  &kp PAGE_UP  &kp PAGE_DOWN    &kp MINUS             &kp EQUAL              &kp NON_US_BACKSLASH  &kp PIPE          &kp GRAVE          &kp TILDE
+                                  &trans   &trans       &trans           &trans                &trans                 &trans
             >;
         };
 
         layer_3 {
             bindings = <
-&trans  &rgb_ug RGB_TOG                 &rgb_ug RGB_HUI                   &rgb_ug RGB_HUD                  &rgb_ug RGB_SAI                   &rgb_ug RGB_SAD                     &mkp LCLK  &tb_pim447 PIM447_TOGGLE_MODE  &mkp RCLK  &mkp MB1  &mkp MB2  &out OUT_TOG
-&trans  &rgb_ug RGB_BRI                 &rgb_ug RGB_BRD                   &rgb_ug RGB_SPI                  &rgb_ug RGB_SPD                   &rgb_ug RGB_EFF                     &mkp MB1   &mkp MB2                       &mkp MB3   &mkp MB4  &mkp MB5  &out OUT_BLE
-&trans  &rgb_ug RGB_COLOR_HSB(0,93,49)  &rgb_ug RGB_COLOR_HSB(245,91,50)  &rgb_ug RGB_COLOR_HSB(60,97,53)  &rgb_ug RGB_COLOR_HSB(119,92,52)  &rgb_ug RGB_COLOR_HSB(301,88,49)    &mkp MCLK  &trans                         &trans     &trans    &trans    &ext_power EP_TOG
-                                                                          &mkp LCLK                        &trans                            &mkp RCLK                           &mkp LCLK  &trans                         &mkp RCLK
+&trans  &new_macrofds  &new_macro1      &new_macro3  &new_macro4  &trans    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &new_macro5    &new_macro6      &new_macro7  &trans       &trans    &trans  &trans  &trans  &trans  &trans  &trans
+&trans  &new_macroqq   &new_macrogdgdg  &trans       &trans       &trans    &trans  &trans  &trans  &trans  &trans  &trans
+                                        &trans       &trans       &trans    &trans  &trans  &trans
             >;
-        };
-    };
-
-    conditional_layers {
-        compatible = "zmk,conditional-layers";
-
-        trackball {
-            if-layers = <1 2>;
-            then-layer = <3>;
         };
     };
 };
